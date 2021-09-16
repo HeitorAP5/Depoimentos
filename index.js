@@ -8,14 +8,15 @@ var conexao = bancodedados.conexao
 var documentos = bancodedados.documentos
 
 app.set('view engine', "ejs")
+
 //abrir o form.ejs
 app.get('/',(req,res)=>{
     conexao()
     documentos.find()
     .then((documentos)=>{
         console.log(documentos)
-        res.render("form")
-})
+        res.render("form",{documentos})
+    })
 })
 
 
@@ -30,7 +31,9 @@ app.post('/gravar',(req,res)=>{
         nome:dados.nome,
         cargo:dados.cargo
     }).save()
-    res.send('informações enviadas!')
+    
+    //res.send('informações enviadas!')
+    res.redirect('/')
 })
 
 app.listen(porta)

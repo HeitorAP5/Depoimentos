@@ -17,5 +17,20 @@
     <br>
     <input type="submit" value="Gravar">
     </form>
+    <table>
+        <tr>
+            <th>Nome:</th>
+            <th>Cargo:</th>
+            <th>Mensagem:</th>
+        </tr>
+
+        <% for(var n=0; n<documentos.length; n++){%>
+            <tr>
+                <td><%=documentos[n].nome%></td>
+                <td><%=documentos[n].cargo%></td>
+                <td><%=documentos[n].mensagem%></td>
+            </tr>
+            <% } %>
+    </table>
 </body>
 </html>
