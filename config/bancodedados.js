@@ -8,7 +8,7 @@ var schema = mongoose.Schema
 var depoimentos = new schema({
     mensagem:String,
     nome:String,
-    Cargo:String
+    cargo:String
 })
 
 var documentos = mongoose.model('depoimentos',depoimentos)

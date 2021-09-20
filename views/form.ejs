@@ -17,18 +17,19 @@
     <br>
     <input type="submit" value="Gravar">
     </form>
-    <table>
+    <table border="1">
         <tr>
             <th>Nome:</th>
             <th>Cargo:</th>
             <th>Mensagem:</th>
-        </tr>
+            <th>Ações:</th>
 
         <% for(var n=0; n<documentos.length; n++){%>
             <tr>
                 <td><%=documentos[n].nome%></td>
                 <td><%=documentos[n].cargo%></td>
                 <td><%=documentos[n].mensagem%></td>
+                <td><a href="/excluir?id=<%=documentos[n].id%>">Excluir</a></td>
             </tr>
             <% } %>
     </table>

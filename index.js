@@ -12,7 +12,7 @@ app.set('view engine', "ejs")
 //abrir o form.ejs
 app.get('/',(req,res)=>{
     conexao()
-    documentos.find()
+    documentos.find().sort({"_id":-1})
     .then((documentos)=>{
         console.log(documentos)
         res.render("form",{documentos})
@@ -31,9 +31,21 @@ app.post('/gravar',(req,res)=>{
         nome:dados.nome,
         cargo:dados.cargo
     }).save()
-    
     //res.send('informações enviadas!')
-    res.redirect('/')
+    .then((documentos)=>{
+        res.redirect('/')
+    })
+})
+
+//excluir uma mensagem
+app.get('/excluir', (req,res)=>{
+    var id = req.query.id
+    conexao()
+    documentos.findOneAndRemove({_id:id})
+    .then((documentos)=>{
+        res.redirect('/')
+    })
+
 })
 
 app.listen(porta)
